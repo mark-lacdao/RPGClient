@@ -1,7 +1,5 @@
 package org.nerv.rpgclient.item;
 
-import javafx.util.converter.PercentageStringConverter;
-
 import java.text.NumberFormat;
 import java.text.ParseException;
 
@@ -35,20 +33,8 @@ public class Item {
         this.id = id;
     }
 
-    public Long getRarity() {
-        PercentageStringConverter psc = new PercentageStringConverter();
-        NumberFormat nf = psc.getNumberFormat();
-        Number number = null;
-        try {
-            number = nf.parse(rarity);
-        } catch (ParseException e) {
-            System.err.println(e.getMessage());
-        }
-        if(number == null) {
-            System.err.println("Unable to parse " + rarity + " returning null.");
-            return null;
-        }
-        return number.longValue();
+    public String getRarity() {
+        return rarity;
     }
 
     public void setRarity(String rarity) {
