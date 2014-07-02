@@ -89,17 +89,20 @@ public class RpgObject extends Informable {
     }
 
     private void addToHp(RpgObject rpgObject, Long hp){
-        LOGGER.info("Adding " + hp + " to " + rpgObject.getName());
+        LOGGER.info("Adding " + hp + " to " + rpgObject.getName() + " " + rpgObject.getStats().getHp());
         Long livingObjectHp = rpgObject.getStats().getHp();
         Long processedHp = livingObjectHp + hp;
         Long maxHp = rpgObject.getStats().getMaxHp();
         if(maxHp == null){
+            LOGGER.error("Max HP is null.");
             rpgObject.getStats().setMaxHp(processedHp);
             maxHp = processedHp;
         }
         if(processedHp > maxHp){
+            LOGGER.info("Max HP is less than processed HP.");
             rpgObject.getStats().setHp(maxHp);
         } else {
+            LOGGER.info("Max HP is greater than processed HP.");
             rpgObject.getStats().setHp(processedHp);
         }
     }

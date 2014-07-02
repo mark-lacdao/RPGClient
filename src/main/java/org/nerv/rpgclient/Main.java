@@ -21,15 +21,15 @@ public class Main {
 
         Monster monster = createMonster();
 
-        player1.damage(monster, 20L);
-        player1.executeSkill("Revive", monster);
+        //player1.damage(monster, 20L);
+        //player1.executeSkill("Revive", monster);
         player1.executeSkill("Sword Slash", monster);
         player1.executeSkill("Heal", monster);
-
+        /*
         monster.damage(player1, 4L);
         player1.executeSkill("Sword Slash", monster);
         player1.executeSkill("Sword Slash", monster);
-        player1.executeSkill("Revive", monster);
+        player1.executeSkill("Revive", monster);*/
 
         printHp(player1, monster);
 
@@ -76,8 +76,8 @@ public class Main {
 
     public static Stats createStats(){
         Stats stats = new Stats();
-        stats.setMaxHp(10L);
-        stats.setHp(10L);
+        stats.setMaxHp(20L);
+        stats.setHp(20L);
         return stats;
     }
 
