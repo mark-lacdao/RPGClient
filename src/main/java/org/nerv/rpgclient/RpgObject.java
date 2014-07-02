@@ -1,10 +1,14 @@
 package org.nerv.rpgclient;
 
+import org.apache.log4j.Logger;
+
 /**
  * Created by tenjutsu25 on 6/27/14.
  */
 public class RpgObject extends Informable {
 // TODO: Move error messages to informable class. Or not :p
+    private static final Logger LOGGER = Logger.getLogger(RpgObject.class);
+
     private String name;
     private Stats stats;
     private Boolean alive;
@@ -85,7 +89,7 @@ public class RpgObject extends Informable {
     }
 
     private void addToHp(RpgObject rpgObject, Long hp){
-        System.out.println("Adding " + hp + " to " + rpgObject.getName());
+        LOGGER.info("Adding " + hp + " to " + rpgObject.getName());
         Long livingObjectHp = rpgObject.getStats().getHp();
         Long processedHp = livingObjectHp + hp;
         Long maxHp = rpgObject.getStats().getMaxHp();
