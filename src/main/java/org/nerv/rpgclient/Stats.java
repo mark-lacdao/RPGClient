@@ -10,6 +10,24 @@ public class Stats {
     private Long str;
     private Long def;
     private Long atk;
+    private Long maxMp;
+    private Long mp;
+
+    public Long getMaxMp() {
+        return maxMp;
+    }
+
+    public void setMaxMp(Long maxMp) {
+        this.maxMp = maxMp;
+    }
+
+    public Long getMp() {
+        return mp;
+    }
+
+    public void setMp(Long mp) {
+        this.mp = mp;
+    }
 
     public Long getMaxHp() {
         return maxHp;

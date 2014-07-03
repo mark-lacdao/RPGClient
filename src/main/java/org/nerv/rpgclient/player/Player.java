@@ -48,6 +48,7 @@ public class Player extends RpgObject {
         LOGGER.info(getName() + " executed skill " + skillName + " with type " + skill.getType());
         if(skill.getStatusEffect() != null) target.setStatus(skill.getStatusEffect());
         EffectType type = skill.getType();
+        // TODO: Add deduction to current MP depending on skill MP cost.
         switch (type){
             case ATTACK:
                 damage(target, skill.getDamage());

@@ -14,6 +14,7 @@ public class Skill {
     private Long damage;
     private Long recovery;
     private Status statusEffect;
+    private Long mpCost;
 
     public Skill(EffectType type) {
         this.type = type;
@@ -71,5 +72,14 @@ public class Skill {
 
     public void setStatusEffect(Status statusEffect) {
         this.statusEffect = statusEffect;
+    }
+
+    public Long getMpCost() {
+        if(mpCost == null) return NONE;
+        return mpCost;
+    }
+
+    public void setMpCost(Long mpCost) {
+        this.mpCost = mpCost;
     }
 }
