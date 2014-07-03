@@ -40,7 +40,7 @@ public class RpgObject extends Informable {
 
     public Boolean isAlive() {
         if(alive == null){
-            System.err.println("Error! Object is neither alive nor dead. :/");
+            LOGGER.error("Error! Object is neither alive nor dead. :/");
             return null;
         }
         return getStats().getHp() > 0;
@@ -52,7 +52,7 @@ public class RpgObject extends Informable {
     }
 
     public void die(){
-        System.out.println(getName()  + " just died.");
+        LOGGER.info(getName()  + " just died.");
         setStatus(Status.NORMAL);
         setAlive(false);
     }
@@ -64,7 +64,7 @@ public class RpgObject extends Informable {
             return;
 
         }
-        System.out.println("Adding to hp.");
+        LOGGER.info("Adding to hp.");
         addToHp(rpgObject, hp);
     }
 
