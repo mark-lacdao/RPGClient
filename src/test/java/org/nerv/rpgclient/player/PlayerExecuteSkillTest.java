@@ -15,10 +15,13 @@ public class PlayerExecuteSkillTest {
 
     private static final Long MAX_HP = 10L;
     private static final Long MONSTER_CURRENT_HP = 5L;
+    private static final Long DEAD_HP = 0L;
     private static final Long HEAL_RECOVERY_HP = 3L;
+    private static final Long ANGELIC_CALLING_RECOVERY_HP = 3L;
     private static final Long SLASH_DAMAGE_HP = 4L;
     private static final String HEAL_NAME = "Heal";
     private static final String SLASH_NAME = "Slash";
+    private static final String ANGELIC_CALLING_NAME = "Angelic Calling";
 
     @Test
     public void shouldHealIfRecovery(){
@@ -41,9 +44,23 @@ public class PlayerExecuteSkillTest {
         swordsmanPlayer.executeSkill(SLASH_NAME, monster);
 
         Long expectedHp = MONSTER_CURRENT_HP - SLASH_DAMAGE_HP;
-
         assertEquals(expectedHp, monster.getStats().getHp());
 
+    }
+
+    @Test
+    public void shouldReviveIfNecromancy(){
+        Player healerPlayer = createPlayer(createHealerJob());
+        healerPlayer.getJob().addSkill(createSkill(EffectType.NECROMANCY, ANGELIC_CALLING_NAME, ANGELIC_CALLING_RECOVERY_HP));
+
+        Monster monster = createMonster(DEAD_HP);
+        assertFalse(monster.isAlive()); // Check if dead
+
+        healerPlayer.executeSkill(ANGELIC_CALLING_NAME, monster);
+
+        Long expectedHp = DEAD_HP + ANGELIC_CALLING_RECOVERY_HP;
+        assertEquals(expectedHp, monster.getStats().getHp());
+        assertTrue(monster.isAlive());
     }
     
     private static Player createPlayer(Job job){
